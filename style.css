@@ -1,0 +1,184 @@
+/* ==========================================================================
+   RESET E CONFIGURAÇÕES GERAIS
+   ========================================================================== */
+:root {
+    /* Paleta de Cores Premium (Tech & Automation) */
+    --navy-dark: #0A192F;       /* Azul Marinho Profundo */
+    --navy-medium: #172A45;     /* Azul Marinho Intermediário */
+    --blue-accent: #00E5FF;     /* Cyan/Glow de Automação (Contraste) */
+    --blue-button: #0052D4;     /* Azul de Conversão */
+    --text-main: #1E293B;       /* Cinza Escuro para Leitura */
+    --text-muted: #64748B;      /* Subtítulos */
+    --bg-light: #F8FAFC;        /* Fundo do Card */
+    --white: #FFFFFF;
+    
+    /* Fontes e Transições */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-medium) 50%, #020c1b 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: var(--text-main);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Efeito de Degradê de Luz de Fundo (Glow sutil para o vídeo) */
+body::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: var(--blue-accent);
+    background-clip: padding-box;
+    filter: blur(150px);
+    opacity: 0.15;
+    top: 10%;
+    left: 10%;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   CONTAINER DO FORMULÁRIO (CARD)
+   ========================================================================== */
+.form-container {
+    background: var(--white);
+    width: 100%;
+    max-width: 450px;
+    padding: 40px 30px;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(2, 12, 27, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+/* Borda superior decorativa em degradê */
+.form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--blue-button) 0%, var(--blue-accent) 100%);
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+}
+
+/* Títulos */
+.form-container h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--navy-dark);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+/* Subtítulo simulando gancho de marketing */
+.form-container::after {
+    content: 'Receba o contato da nossa IA em menos de 1 minuto.';
+    display: block;
+    font-size: 14px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+/* ==========================================================================
+   CAMPOS DE ENTRADA (INPUTS)
+   ========================================================================== */
+#leadForm {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Estilização dos Inputs */
+#leadForm input[type="text"],
+#leadForm input[type="email"],
+#leadForm input[type="tel"] {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 15px;
+    border: 2px solid #E2E8F0;
+    border-radius: 12px;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    outline: none;
+    transition: var(--transition);
+}
+
+/* Efeito de Foco (Glow Profissional) */
+#leadForm input:focus {
+    border-color: var(--blue-button);
+    background-color: var(--white);
+    box-shadow: 0 0 0 4px rgba(0, 82, 212, 0.15);
+}
+
+/* Customização do Placeholder */
+#leadForm input::placeholder {
+    color: #94A3B8;
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   BOTÃO DE CONVERSÃO (CTA)
+   ========================================================================== */
+#leadForm button[type="submit"] {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    background: linear-gradient(135deg, var(--blue-button) 0%, #2472fc 100%);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 82, 212, 0.4);
+    transition: var(--transition);
+    margin-top: 10px;
+}
+
+/* Efeitos do Botão */
+#leadForm button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 82, 212, 0.6);
+    background: linear-gradient(135deg, #2472fc 0%, var(--blue-button) 100%);
+}
+
+#leadForm button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (MOBILE-FIRST)
+   ========================================================================== */
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+    
+    .form-container {
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+    
+    .form-container h2 {
+        font-size: 20px;
+    }
+}
